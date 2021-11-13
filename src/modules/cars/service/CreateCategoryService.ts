@@ -1,5 +1,6 @@
 import { response } from 'express';
-import { CategoriesRepository } from "../repositories/categoryRepository"
+import { CategoriesRepository } from "../repositories/CategoryRepository"
+import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
 
 
 interface IRequest {
@@ -8,7 +9,7 @@ interface IRequest {
 }
 
 class CreateCategoryService {
-    constructor(private categoriesRepository: CategoriesRepository) {}
+    constructor(private categoriesRepository: ICategoriesRepository) {}
 
     execute({ description, name }: IRequest){
         const categoryAlreadyExists = this.categoriesRepository.findByName(name);
