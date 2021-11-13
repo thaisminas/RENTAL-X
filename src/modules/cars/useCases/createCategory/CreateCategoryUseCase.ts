@@ -1,6 +1,6 @@
 import { response } from 'express';
-import { CategoriesRepository } from "../repositories/CategoryRepository"
-import { ICategoriesRepository } from '../repositories/ICategoriesRepository';
+import { CategoriesRepository } from "../../repositories/CategoryRepository"
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 
 interface IRequest {
@@ -8,10 +8,10 @@ interface IRequest {
     description: string;
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
     constructor(private categoriesRepository: ICategoriesRepository) {}
 
-    execute({ description, name }: IRequest){
+    execute({ description, name }: IRequest): void{
         const categoryAlreadyExists = this.categoriesRepository.findByName(name);
         
         if(categoryAlreadyExists){
@@ -19,10 +19,10 @@ class CreateCategoryService {
 
         }
 
-        this.categoriesRepository.create({ name, description});
+        this.categoriesRepository.create({ name, description });
     }
 }
 
 
 
-export { CreateCategoryService }
+export { CreateCategoryUseCase }
