@@ -1,5 +1,5 @@
 import { response } from 'express';
-import { CategoriesRepository } from "../../repositories/CategoryRepository"
+import { CategoriesRepository } from "../../repositories/CategoriesRepository"
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 
