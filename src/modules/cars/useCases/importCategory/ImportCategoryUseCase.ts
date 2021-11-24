@@ -31,6 +31,8 @@ class ImportCategoryUseCase {
             })
 
             .on('end', () => {
+                //para remover depois o arquivo pegar a categoria do arquivo
+                fs.promises.unlink(file.path);
                 resolve(categories);
             })
 
