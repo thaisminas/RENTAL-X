@@ -1,9 +1,12 @@
 import { Router } from "express";
 import multer from "multer";
+import { CreateCategoryController } from "../modules/cars/useCases/createCategory/CreateCategoryController";
 
-import  createCategoryController  from "../modules/cars/useCases/createCategory";
 import { importCategoryController } from "../modules/cars/useCases/importCategory";
+import { ImportCategororyController } from "../modules/cars/useCases/importCategory/ImportCategoryController";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
+import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
+import { ListCategoriesUseCase } from "../modules/cars/useCases/listCategories/ListCategoriesUseCase";
 
 const categoriesRoutes = Router();
 
@@ -12,20 +15,18 @@ const upload = multer({
     dest:'./tmp',
 });
 
+const createCategoryController = new CreateCategoryController()
+const listCategoryController = new ListCategoriesController()
+const importCategoryController = new ImportCategororyController()
 
-categoriesRoutes.post("/", (request, response ) => {
-    return createCategoryController().handle(request, response);
-})
+
+categoriesRoutes.post("/", createCategoryController.handle)
 
 
-categoriesRoutes.get("/", (request, response)=> {
-    return listCategoriesController.handle(request, response);
-})
+categoriesRoutes.get("/", listCategoryController.handle)
 
 
 //Passando o multer como middleware e adiciona como single para receber um arquivo por vez
-categoriesRoutes.post('/import', upload.single('file'), (request, response)=> {
-    return importCategoryController.handle(request, response);
-})
+categoriesRoutes.post('/import', upload.single('file'), importCategoryController.handle)
 
 export { categoriesRoutes };
