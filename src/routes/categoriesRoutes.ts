@@ -16,7 +16,9 @@ const upload = multer({
 });
 
 const createCategoryController = new CreateCategoryController()
+
 const listCategoryController = new ListCategoriesController()
+
 const importCategoryController = new ImportCategororyController()
 
 
