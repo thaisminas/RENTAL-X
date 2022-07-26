@@ -3,7 +3,7 @@ import { AuthenticateUserUseCase } from "./authenticateUserUseCase";
 import UsersRepositoryInMemory from '../../repositories/in-memory/userRepositoryInMemory';
 import { CreateUserUseCase } from "../createUser/createUserUseCase";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
-import { AppError } from '../../../../errors/appError';
+import { AppError } from '../../../../shared/errors/appError';
 
 //criando as variaveis e tipando elas com as classes
 let authenticateUserUseCase: AuthenticateUserUseCase;
