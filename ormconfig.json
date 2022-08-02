@@ -1,13 +1,13 @@
 {
     "type":"postgres",
     "port": 5432,
-    "host":"localhost",
+    "host":"database_ignite",
     "username": "tminas",
     "password": "password",
     "database": "rentx",
-    "migrations": ["./src/database/migrations/*.ts"],
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "cli": {
-        "migrationsDir": "./src/database/migrations"
+        "migrationsDir": "./src/shared/infra/typeorm/migrations"
     },
     "entities": ["./src/modules/**/entities/*.ts"]
 }
